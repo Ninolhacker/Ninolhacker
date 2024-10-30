@@ -1,0 +1,41 @@
+(declare-const p11 Bool)
+(declare-const p12 Bool) 
+(declare-const p13 Bool)
+(declare-const p14 Bool)
+(declare-const p21 Bool)
+(declare-const p22 Bool)
+(declare-const p23 Bool)
+(declare-const p24 Bool)
+(declare-const p31 Bool)
+(declare-const p32 Bool)
+(declare-const p33 Bool)
+(declare-const p34 Bool)
+(declare-const p41 Bool)
+(declare-const p42 Bool)
+(declare-const p43 Bool)
+(declare-const p44 Bool)
+
+(define-fun xor4 ((x Bool) (y Bool) (z Bool) (a Bool)) Bool 
+                (and 
+                         (or x y z a) 
+                         ((_ at-most 1) x y z a)
+                )
+)
+
+(assert(xor4 p11 p12 p13 p14))
+(assert(xor4 p21 p22 p23 p24))
+(assert(xor4 p31 p32 p33 p34))
+(assert(xor4 p41 p42 p43 p44))
+
+(assert(xor4 p11 p21 p31 p41))
+(assert(xor4 p12 p22 p32 p42))
+(assert(xor4 p13 p23 p33 p43))
+(assert(xor4 p14 p24 p34 p44))
+
+(assert(not p12))(assert(not p13))
+(assert(not p23))(assert(not p24))
+(assert(not p31))(assert(not p32))
+(assert(not p43))(assert(not p44))
+
+(check-sat)
+(get-model)
