@@ -37,7 +37,7 @@
 
 (assert(xor3 c9 h9 a9))(assert(xor3 c10 h10 a10))(assert(xor3 c11 h11 a11))
 (assert((_ at-most 1) l9 p9))(assert((_ at-most 1) l10 p10))(assert((_ at-most 1) l11 p11))
-(assert (not(or c1 h1)))
+(assert (not(or c9 h9)))
 
 (check-sat)
 (get-model)
